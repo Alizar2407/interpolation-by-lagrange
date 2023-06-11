@@ -1,0 +1,12 @@
+body            { font-family: sans-serif; background: #f3dcb3; }
+
+.page           { margin: 2em auto; width: auto; border: 1px solid #42100d;
+                  padding: 0.8em; background: #fdd77a; }
+.headers        { font-family: 'Georgia', serif; border-bottom: 2px solid #2d203a;
+                  font-style: italic; text-decoration:none; color: #42100d }
+.text           { font-family: 'Georgia', serif; color: #42100d }
+.btn            { font-family: 'Georgia', serif; margin: 2em auto; width: auto; border: 1px solid #42100d;
+                  padding: 0.8em; background: #e7af3e; color: #42100d; }
+.valueTextBoxes { text-align: center; font-family: 'Georgia', serif; background: #e7af3e; color: #42100d}
+.formula        { color: #190a11}
+.error          { background: #fc0000; padding: 0.5em; }

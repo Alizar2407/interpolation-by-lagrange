@@ -1,0 +1,93 @@
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<h1> <a class=headers href="#" id="method_desc_link">Описание метода</a></h1>
+<div id="method_description" style="display: none;">
+  <div class=text>
+    <p><b>Интерполяционный многочлен Лагранжа</b> — многочлен минимальной степени, принимающий заданные значения в заданном наборе точек, то есть решающий задачу интерполяции.</p>
+    <p>Пусть задана \(n+1\) пара чисел \((x_0,y_0),(x_1,y_1),\ldots ,(x_n,y_n)\), <b>где все \(x_j\) различны</b>. <br/>
+    Программа выполняет построение многочлена \(L(x)\) степени не более \(n\), для которого \(L(x_j)=y_j\)</p>
+    <p>Искомый многочлен вычисляется по формуле \(L(x)=\sum_{i=0}^{n} (y_i * l_i),\)<br/> где \(l_i(x)=\prod_{j=0,j\ne i}^{n}\frac{x-x_j}{x_i-x_j}\)</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+   $('#method_desc_link').click(function() {
+   $('#method_description').slideToggle('fast', function() {
+    // ok
+  });
+  return false;
+});
+</script>
+
+<h1 <a class=headers href="#" id="values_table_link">Значения функции</a></h1>
+<div id="values_table">
+  <table width=100% style="position: relative">
+    <tr>
+      <td align=left>
+        <form action="[% delete_rows_url %]" method=post align="left">
+          <dd><input class=btn type=submit value='Удалить точку (-)'>
+        </form>
+      </td>
+      <td align=right>
+        <form action="[% add_rows_url %]" method=post align="right">
+          <dd><input class=btn type=submit value='Добавить точку (+)'>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+  <form action="[% interpolate_url %]" method=post align="center">
+    <table class=text border="1" style="width:100%">
+      <thead>
+        <tr>
+          <th align = "center">i</th>
+          <th align = "center">x</th>
+          <th align = "center">y</th>
+        </tr>
+      </thead>
+      <tbody>
+        [% total = 0 %]
+        [% WHILE total < rows_count %]
+          <tr>
+            <th align = "center">[%total%]</td>
+            <td align = "center"><input class = valueTextBoxes type="text" name="x_value[%total%]" value="[% x_arr.$total %]"></td>
+            <td align = "center"><input class = valueTextBoxes type="text" name="y_value[%total%]" value="[% y_arr.$total %]"></td>
+          </tr>
+          [% total = total + 1 %]
+        [% END %]
+      <tbody>
+    </table>
+
+    <dd align = "center"><input class=btn type=submit value='Вычислить'>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $('#values_table_link').click(function() {
+  $('#values_table').slideToggle('fast', function() {
+    // ok
+  });
+  return false;
+});
+</script>
+
+<h1 <a class=headers href="#" id="results_link">Результат</a></h1>
+<div id="results" style="display: none;">
+  [% IF formula %]
+    <p class=formula>[% formula %]</p>
+  [% END %]
+
+  [% IF graph %]
+    <p align="center"><img src="/images/[%graph%]"><p>
+  [% END %]
+</div>
+
+<script type="text/javascript">
+  $('#results_link').click(function() {
+  $('#results').slideToggle('fast', function() {
+    // ok
+  });
+  return false;
+});
+</script>
